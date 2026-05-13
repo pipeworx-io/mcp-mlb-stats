@@ -1,0 +1,18 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.pipeworx-io/mlb-stats",
+  "title": "Mlb Stats",
+  "description": "MLB Stats API MCP — official MLB statistics",
+  "version": "0.1.0",
+  "websiteUrl": "https://pipeworx.io/packs/mlb-stats",
+  "repository": {
+    "url": "https://github.com/pipeworx-io/mcp-mlb-stats",
+    "source": "github"
+  },
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://gateway.pipeworx.io/mlb-stats/mcp"
+    }
+  ]
+}
