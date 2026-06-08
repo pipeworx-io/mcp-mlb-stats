@@ -3,7 +3,7 @@
   "name": "io.github.pipeworx-io/mlb-stats",
   "title": "Mlb Stats",
   "description": "MLB Stats API MCP — official MLB statistics (keyless).",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "websiteUrl": "https://pipeworx.io/packs/mlb-stats",
   "repository": {
     "url": "https://github.com/pipeworx-io/mcp-mlb-stats",
