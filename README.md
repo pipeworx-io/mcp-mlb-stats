@@ -1,21 +1,13 @@
 # mcp-mlb-stats
 
-MLB Stats API MCP — official MLB statistics
+MLB Stats API MCP — official MLB statistics (keyless).
 
-Part of [Pipeworx](https://pipeworx.io) — an MCP gateway connecting AI agents to 673+ live data sources.
+Part of [Pipeworx](https://pipeworx.io) — an MCP gateway connecting AI agents to 785+ live data sources.
 
 ## Tools
 
 | Tool | Description |
 |------|-------------|
-| `schedule` | Game schedule. Filter by date (YYYY-MM-DD), full season, or specific team. |
-| `standings` | Standings by league/division for a season or date. |
-| `get_team` | Team profile + venue info. |
-| `team_roster` | Players on a team. Use roster_type=active for current 26-man, =40Man for full org. |
-| `get_player` | Player profile by ID. |
-| `player_stats` | Career or season stats for a player. |
-| `get_boxscore` | Full box score for a completed/in-progress game by gamePk. |
-| `get_game_feed` | Live game feed with play-by-play. |
 
 ## Quick Start
 
@@ -31,7 +23,7 @@ Add to your MCP client (Claude Desktop, Cursor, Windsurf, etc.):
 }
 ```
 
-Or connect to the full Pipeworx gateway for access to all 673+ data sources:
+Or connect to the full Pipeworx gateway for access to all 785+ data sources:
 
 ```json
 {

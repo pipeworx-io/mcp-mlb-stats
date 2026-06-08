@@ -1,7 +1,7 @@
 {
   "name": "@pipeworx/mcp-mlb-stats",
   "version": "0.1.0",
-  "description": "MLB Stats API MCP — official MLB statistics",
+  "description": "MLB Stats API MCP — official MLB statistics (keyless).",
   "type": "module",
   "main": "src/index.ts",
   "types": "src/index.ts",
