@@ -1,13 +1,23 @@
-# mcp-mlb-stats
+# @pipeworx/mlb-stats
 
-MLB Stats API MCP — official MLB statistics (keyless).
+MLB Stats API MCP — official MLB statistics: schedules, scores, rosters, player stats, standings, box scores. No auth.
 
-Part of [Pipeworx](https://pipeworx.io) — an MCP gateway connecting AI agents to 785+ live data sources.
+Part of [Pipeworx](https://pipeworx.io) — an MCP gateway connecting AI agents to 1394+ live data sources.
 
 ## Tools
 
-| Tool | Description |
-|------|-------------|
+- `schedule(date?, season?, team_id?, sport_id?)` — game schedule by date / season
+- `standings(league_id?, season?, date?)` — current/historic standings
+- `get_team(team_id)` — team profile
+- `team_roster(team_id, roster_type?, season?)` — players on a team
+- `get_player(player_id)` — player profile
+- `player_stats(player_id, group?, season?, stats?)` — career or season stats
+- `get_boxscore(game_pk)` — full game box score
+- `get_game_feed(game_pk)` — live game feed (play-by-play)
+
+## Data source
+
+`https://statsapi.mlb.com/api/v1/` — public, used by MLB.com itself.
 
 ## Quick Start
 
@@ -23,7 +33,7 @@ Add to your MCP client (Claude Desktop, Cursor, Windsurf, etc.):
 }
 ```
 
-Or connect to the full Pipeworx gateway for access to all 785+ data sources:
+Or connect to the full Pipeworx gateway for access to all 1394+ data sources:
 
 ```json
 {
@@ -47,7 +57,7 @@ The gateway picks the right tool and fills the arguments automatically.
 
 ## More
 
-- [All tools and guides](https://github.com/pipeworx-io/examples)
+- [Docs and guides](https://pipeworx.io/docs)
 - [pipeworx.io](https://pipeworx.io)
 
 ## License
