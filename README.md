@@ -1,23 +1,27 @@
 # @pipeworx/mlb-stats
 
-MLB Stats API MCP — official MLB statistics: schedules, scores, rosters, player stats, standings, box scores. No auth.
+MLB Stats API MCP — official MLB statistics: teams, standings, daily schedule and scores, rosters, player bios, season stats, per-game logs, batter-vs-pitcher splits, probable pitchers with posted lineups, and full box scores. No auth.
 
-Part of [Pipeworx](https://pipeworx.io) — an MCP gateway connecting AI agents to 1476+ live data sources.
+Part of [Pipeworx](https://pipeworx.io) — an MCP gateway connecting AI agents to 1679+ live data sources.
 
 ## Tools
 
-- `schedule(date?, season?, team_id?, sport_id?)` — game schedule by date / season
-- `standings(league_id?, season?, date?)` — current/historic standings
-- `get_team(team_id)` — team profile
-- `team_roster(team_id, roster_type?, season?)` — players on a team
-- `get_player(player_id)` — player profile
-- `player_stats(player_id, group?, season?, stats?)` — career or season stats
-- `get_boxscore(game_pk)` — full game box score
-- `get_game_feed(game_pk)` — live game feed (play-by-play)
+- `mlb_teams()` — every MLB team with id, abbreviation, league, division, venue
+- `mlb_standings(season?, league_id?)` — division standings; defaults to the current season
+- `mlb_schedule(date?)` — games, scores, status and venue for a date (default today), with `gamePk`
+- `mlb_roster(team_id)` — active roster
+- `mlb_player(person_id)` — biographical profile
+- `mlb_player_stats(player, season?, group?)` — season hitting and/or pitching totals; `player` is a name or id
+- `mlb_player_game_log(player, season?, group?, last?)` — per-game lines, newest first (default last 15); pitchers default to the pitching log
+- `mlb_matchup(batter, pitcher, season?)` — batter-vs-pitcher history split by season
+- `mlb_probable_pitchers(date?, team?)` — probable starters and, once posted, the batting order for each game
+- `mlb_boxscore(game_pk)` — every batter's and pitcher's line plus team totals for one game
+
+Player and team arguments accept names ("Yordan Alvarez", "Astros", "HOU") or numeric ids.
 
 ## Data source
 
-`https://statsapi.mlb.com/api/v1/` — public, used by MLB.com itself.
+`https://statsapi.mlb.com/api/v1/` — public, used by MLB.com itself. Lineups appear 2-4 hours before first pitch; probable pitchers as soon as MLB names them.
 
 ## Quick Start
 
@@ -63,9 +67,45 @@ directly, instead of just this one's:
 }
 ```
 
-Both URLs reach the same gateway and the same 1476+ data sources. The
+Both URLs reach the same gateway and the same 1679+ data sources. The
 only difference is which pack's tools are listed **directly**; `ask_pipeworx`
 reaches all of them from either one.
+
+## No MCP client? Call it over HTTP
+
+```bash
+curl -X POST https://gateway.pipeworx.io/v1/tools/mlb_teams \
+  -H 'Content-Type: application/json' \
+  -d '{}'
+```
+
+No account needed for the first calls. Inspect any tool: `GET https://gateway.pipeworx.io/v1/tools/mlb_teams`. Find one: `POST https://gateway.pipeworx.io/v1/tools/search_packs` with `{"query":"..."}`.
+
+## Standalone (no gateway account)
+
+This package also runs as a local stdio MCP server — no Pipeworx account, no
+gateway round-trip:
+
+```json
+{
+  "mcpServers": {
+    "mlb-stats": {
+      "command": "npx",
+      "args": ["-y", "@pipeworx/mcp-mlb-stats"]
+    }
+  }
+}
+```
+
+Or run it directly to confirm it starts:
+
+```bash
+npx -y @pipeworx/mcp-mlb-stats
+```
+
+It speaks MCP over stdin/stdout and answers `initialize`/`tools/list`/`tools/call`
+for **only** this pack's tools — none of the shared meta-tools the gateway
+connection above adds. Same source, same tools, no ask_pipeworx routing.
 
 ## Using with ask_pipeworx
 
@@ -86,13 +126,3 @@ The gateway picks the right tool and fills the arguments automatically.
 ## License
 
 MIT
-
-## No MCP client? Call it over HTTP
-
-```bash
-curl -X POST https://gateway.pipeworx.io/v1/tools/mlb_teams \
-  -H 'Content-Type: application/json' \
-  -d '{}'
-```
-
-No account needed for the first calls. Inspect any tool: `GET https://gateway.pipeworx.io/v1/tools/mlb_teams`. Find one: `POST https://gateway.pipeworx.io/v1/tools/search_packs` with `{"query":"..."}`.
