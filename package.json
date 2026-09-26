@@ -1,6 +1,6 @@
 {
   "name": "@pipeworx/mcp-mlb-stats",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "MLB Stats API MCP — official MLB statistics (keyless).",
   "type": "module",
   "main": "src/index.ts",
@@ -26,7 +26,7 @@
     "@cloudflare/workers-types": "^4.20260405.1"
   },
   "pipeworx": {
-    "sourceHash": "v1-b7b1ccec892019b01e2f6fc0dd0f721deb6672b0ab2dd5e6a15a09b863fb614f",
-    "sourceCommit": "adb69d997f82a62e8e22b594488c7d04a227db35"
+    "sourceHash": "v1-b20d9c0029bcf3f3f495e151cb8c360ff933143a3257058c04622fd724cb717d",
+    "sourceCommit": "6182c4cfebddb94950e060b5d2fca18f18ad1aca"
   }
 }

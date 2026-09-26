@@ -9,7 +9,7 @@ import { CallToolRequestSchema, ListToolsRequestSchema } from '@modelcontextprot
 import pack from './index.js';
 
 const server = new Server(
-  { name: '@pipeworx/mcp-mlb-stats', version: '0.3.0' },
+  { name: '@pipeworx/mcp-mlb-stats', version: '0.3.1' },
   { capabilities: { tools: {} } },
 );
 
