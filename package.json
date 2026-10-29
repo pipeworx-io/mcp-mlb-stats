@@ -1,12 +1,20 @@
 {
   "name": "@pipeworx/mcp-mlb-stats",
-  "version": "0.3.2",
+  "version": "0.4.0",
   "description": "MLB Stats API MCP — official MLB statistics (keyless).",
   "type": "module",
-  "main": "src/index.ts",
-  "types": "src/index.ts",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./tools.json": "./tools.json",
+    "./package.json": "./package.json"
+  },
   "bin": {
     "mcp-mlb-stats": "bin/cli.js"
+  },
+  "files": ["bin/", "lib/", "tools.json", "server.json"],
+  "engines": {
+    "node": ">=18"
   },
   "keywords": ["mcp", "mcp-server", "model-context-protocol", "pipeworx", "mlb-stats"],
   "license": "MIT",
@@ -14,19 +22,12 @@
     "type": "git",
     "url": "git+https://github.com/pipeworx-io/mcp-mlb-stats.git"
   },
-  "scripts": {
-    "typecheck": "tsc --noEmit"
-  },
-  "dependencies": {
-    "@modelcontextprotocol/sdk": "^1.30.0",
-    "tsx": "^4.19.0"
-  },
-  "devDependencies": {
-    "typescript": "^5.9.3",
-    "@cloudflare/workers-types": "^4.20260405.1"
-  },
+  "mcpName": "io.github.pipeworx-io/mlb-stats",
   "pipeworx": {
-    "sourceHash": "v1-b173528a8a393145af264ce7c055345cc83b2e0bd02f045ab50396d1684a7521",
-    "sourceCommit": "ba9dd6df5992aeb16ef2425ee86d1752c34ca636"
+    "mode": "gateway",
+    "slug": "mlb-stats",
+    "gatewaySlug": "mlb-stats",
+    "sourceHash": "v1-89a1561320907a0e94409dcc0f96262e30624ef99daaff7af85b7983c9149bda",
+    "sourceCommit": "5c89d6abb778d45da5d92002eb251978622bedf9"
   }
 }
